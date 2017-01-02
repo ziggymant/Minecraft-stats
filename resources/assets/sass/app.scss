@@ -1,0 +1,70 @@
+
+.headLoc {
+	padding: 20px 0 20px 0;
+	text-align: center;
+}
+h1 {
+	font-size: 32px;
+}
+.small {
+	font-size: small;
+	margin: 0;
+}
+
+.table tbody td font {
+	color: black;
+}
+
+.row>#table>tbody {
+background-colur: #fff;
+}
+
+.bg-primary {
+    opacity: 0.8;
+}
+
+#admin-page {
+	padding-top: 0px;
+}
+
+
+.search-result ul li {
+	list-style-type: none;
+}
+
+.search-result ul {
+	padding:0;
+}
+
+.search-result{
+	position: absolute;
+	z-index: 100;
+}
+
+
+.comment-reply {
+	display: none;
+}
+.thumbnail> #thumb-image{
+	height:150px;
+}
+#app {
+	margin-top: 40px;
+}
+
+.row {
+	margin-top: 40px;
+}
+#nested-comment{
+	margin-top: 20px;
+}
+
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
