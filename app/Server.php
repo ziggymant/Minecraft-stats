@@ -26,5 +26,8 @@ class Server extends Model
         $server->update(['rank'=>$i+1]);
       }
     }
+    public function comments(){
+      return $this->hasMany('App\Comment');
+    }
 
 }

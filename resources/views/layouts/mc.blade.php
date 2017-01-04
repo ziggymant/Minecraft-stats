@@ -106,6 +106,7 @@
 </div>
 </body>
 <script src="{{asset('js/libs.js')}}"></script>
+@yield('scripts')
 </html>
 <!--
 

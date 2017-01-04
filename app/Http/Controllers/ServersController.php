@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Vote;
 use App\Server;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use MinecraftServerStatus\MinecraftServerStatus;
 
@@ -28,8 +29,9 @@ class ServersController extends Controller
 
     public function view($id) {
       $server = Server::findOrFail($id);
+      $comments = Comment::where('server_id', $id)->get();
       $stats = MinecraftServerStatus::query($server->address, 25565);
-      return view('server', compact('server', 'stats'));
+      return view('server', compact('server', 'stats', 'comments'));
     }
 
 

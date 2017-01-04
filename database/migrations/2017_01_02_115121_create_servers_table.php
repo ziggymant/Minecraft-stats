@@ -23,6 +23,7 @@ class CreateServersTable extends Migration
             $table->string('banner_url')->nullable();
             $table->integer('approved')->default(0);
             $table->integer('votes')->default(0);
+            $table->integer('rank')->default(0);
             $table->timestamps();
         });
     }

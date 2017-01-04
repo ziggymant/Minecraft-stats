@@ -21,3 +21,5 @@ Auth::routes();
 Route::get('/vote/{id}', 'ServersController@vote');
 
 Route::resource('/admin/servers', 'AdminServersController');
+Route::resource('/admin/comments', 'ServerCommentsController');
+Route::resource('/admin/replies', 'CommentRepliesController');
