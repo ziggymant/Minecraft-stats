@@ -19,10 +19,16 @@ h1 {
 background-colur: #fff;
 }
 
-.bg-primary {
-    opacity: 0.8;
+button a:hover {
+	text-decoration: none;
 }
 
+#table-vertical{
+	background-color: #fff;
+}
+#table-vertical td {
+	border: 1px solid #000;
+}
 #admin-page {
 	padding-top: 0px;
 }

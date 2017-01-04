@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServersTable extends Migration
+class CreateVotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,10 @@ class CreateServersTable extends Migration
      */
     public function up()
     {
-        Schema::create('servers', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('address');
-            $table->integer('port')->nullable();
-            $table->string('description');
-            $table->string('website');
             $table->integer('user_id');
-            $table->string('banner_url')->nullable();
-            $table->integer('approved')->default(0);
-            $table->integer('votes')->default(0);
+            $table->integer('server_id');
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ class CreateServersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servers');
+        Schema::dropIfExists('votes');
     }
 }

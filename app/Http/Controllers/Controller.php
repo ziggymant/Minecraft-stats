@@ -7,31 +7,20 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use MinecraftServerStatus\MinecraftServerStatus;
+use App\Server;
+use App\Votes;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function welcome(){
-    	$servers = array(
-		"s.nerd.nu",
-		"play.skybattle.net",
-		"YayMc.com",
-		"play.gotpvp.com",
-		"rexcraftia.com"
-		);
+
+    $servers = Server::orderBy('votes', 'DESC')->get();
+
 		return view('welcome', compact('servers'));
 
 
     }
-    public function admin(){
-    	$servers = array(
-		"s.nerd.nu",
-		"play.skybattle.net",
-		"YayMc.com",
-		"play.gotpvp.com",
-		"rexcraftia.com"
-		);
-		return view('admin.index', compact('servers'));
-    }
+
 }

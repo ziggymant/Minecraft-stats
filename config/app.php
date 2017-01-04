@@ -165,7 +165,8 @@ return [
         MinecraftServerStatus\MinecraftServerStatus::class,
         MinecraftBanner\MinecraftBanner::class,
         MinecraftBanner\ServerBanner::class,
-        
+        Collective\Html\HtmlServiceProvider::class,
+
 
         /*
          * Package Service Providers...
@@ -231,7 +232,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'MinecraftServerStatus' => MinecraftServerStatus\MinecraftServerStatus::class,
         'MinecraftBanner' => MinecraftBanner\MinecraftBanner::class,
-        'ServerBanner' => MinecraftBanner\ServerBanner::class
+        'ServerBanner' => MinecraftBanner\ServerBanner::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

@@ -132,13 +132,13 @@
 
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Servers<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">All Posts</a>
+                                <a href="{{route('servers.index')}}">All Servers</a>
                             </li>
                             <li>
-                                <a href="#">Create Post</a>
+                                <a href="{{route('servers.create')}}">Add server</a>
                             </li>
                             <li>
                                 <a href="#">Show comments</a>

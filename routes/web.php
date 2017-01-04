@@ -11,11 +11,13 @@
 |
 */
 
-Route::get('/', 'Controller@welcome');
+Route::get('/', 'ServersController@index');
 
 
-Route::get('/test', 'Controller@mc');
+Route::get('/server/{id}', 'ServersController@view');
 Route::get('/admin', 'Controller@admin');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/vote/{id}', 'ServersController@vote');
+
+Route::resource('/admin/servers', 'AdminServersController');

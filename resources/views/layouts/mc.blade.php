@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MineSquare - Welcome to our site</title>
+	<title>Minecraft servers</title>
 	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/yeti/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
@@ -87,7 +87,7 @@
 			<!-- /.container -->
 	</nav>
 <div class="container headLoc">
-	<img src="img/spectrum.png" alt="Replace with your logo!" height="150px" />
+	<img src="{{url("img/spectrum.png")}}" alt="Replace with your logo!" height="150px" />
 </div>
 <div class="container">
 
@@ -105,6 +105,7 @@
 	</div>
 </div>
 </body>
+<script src="{{asset('js/libs.js')}}"></script>
 </html>
 <!--
 
