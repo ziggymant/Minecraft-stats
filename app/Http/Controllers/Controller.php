@@ -9,18 +9,17 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use MinecraftServerStatus\MinecraftServerStatus;
 use App\Server;
 use App\Votes;
+use App\Comment;
+
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function welcome(){
-
-    $servers = Server::orderBy('votes', 'DESC')->get();
-
-		return view('welcome', compact('servers'));
-
-
+      $comments = Comment::all();
+      $servers = Server::orderBy('votes', 'DESC')->get();
+  		return view('welcome', compact('servers', 'comments'));
     }
 
 }

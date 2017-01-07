@@ -37,4 +37,21 @@ class User extends Authenticatable
       }
       return false;
     }
+
+    public function votes(){
+      return $this->hasMany('App\Vote');
+    }
+
+    public function ableToVote(){
+      if($last_vote = Vote::where('user_id', $this->id)->orderBy('created_at', 'DESC')->first()){
+        $days_ago = $last_vote['created_at']->day;
+        if($days_ago >= 30) {
+          return true;
+        }elseif($days_ago < 30) {
+          return false;
+        }
+      } else {
+        return true;
+      }
+    }
 }

@@ -10,16 +10,24 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
-Route::get('/', 'ServersController@index');
-
-
-Route::get('/server/{id}', 'ServersController@view');
-Route::get('/admin', 'Controller@admin');
 Auth::routes();
 
-Route::get('/vote/{id}', 'ServersController@vote');
+Route::get('/', 'ServersController@index');
+Route::get('/server/{id}', 'ServersController@view');
+Route::get('/top', 'ServersController@top');
 
-Route::resource('/admin/servers', 'AdminServersController');
-Route::resource('/admin/comments', 'ServerCommentsController');
-Route::resource('/admin/replies', 'CommentRepliesController');
+
+Route::group(['middleware'=>'auth'], function(){
+  Route::get('/home', 'ServersController@index');
+  Route::get('/vote/{id}', 'ServersController@vote');
+  Route::resource('/admin/comments', 'ServerCommentsController');
+  Route::resource('/admin/replies', 'CommentRepliesController');
+
+});
+
+Route::group(['middleware'=>'admin'], function(){
+
+  Route::get('/admin', 'AdminServersController@admin');
+  Route::resource('/admin/servers', 'AdminServersController');
+
+});

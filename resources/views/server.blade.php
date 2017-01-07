@@ -1,10 +1,13 @@
 @extends('layouts.mc')
 
 @section('content')
+<div class="row col-md-8">
 
-  <table id="table-vertical" class="table ">
+<div class="panel panel-default">
+
+  <table class="table ">
       <thead>
-        {{-- {{dd($comments)}} --}}
+        {{-- {{$vote = Auth::user()->ableToVote()}} --}}
           <tr>
               <td><img width="70" height="64" src="{{$stats['favicon']}}"/></td>
               <td><h3><?php echo $server['address']; ?></h3></td>
@@ -57,6 +60,7 @@
 
       </thead>
   </table>
+</div>
 
   <!-- Blog Comments -->
 @if(Auth::check())
@@ -86,12 +90,23 @@
   <!-- Posted Comments -->
 @if(isset($comments) && count($comments)>0)
   <!-- Comment -->
+  <div class="comment panel panel-default">
+    <div class="panel-body">
+      <h3>Server comments</h3>
+      @if(!Auth::check())
+        <a href="{{ url('/login') }}">Please login to post your comment</a>
+      @endif
+    </div>
+
+
   @foreach($comments as $comment)
   <div class="well">
       <a class="pull-left" href="#">
           <img height="64" class="media-object" src="{{url('img/user_default.ico')}}" alt="">
       </a>
-      <button class="toggle-reply btn btn-primary pull-right">Reply</button>
+      @if(Auth::check())
+        <button class="toggle-reply btn btn-primary pull-right">Reply</button>
+      @endif
       <div class="media-body">
           <h4 class="media-heading">{{$comment->author}}
               <small>{{$comment->created_at->diffForHumans()}}</small>
@@ -137,9 +152,15 @@
       </div>
   </div>
   @endforeach
-
+</div>
 @endif
+</div>
 
+<div class="row col-md-4">
+
+  <p>Side cntent</p>
+
+</div>
 @endsection
 
 @section('scripts')

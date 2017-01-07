@@ -19,6 +19,10 @@ class AdminServersController extends Controller
         return view('admin.servers.index', compact('servers'));
     }
 
+    public function admin(){
+      return view('admin.index');
+    }
+
 
 
     /**

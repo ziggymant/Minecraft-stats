@@ -20,16 +20,36 @@ h1 {
 .row>#table>tbody {
 background-colur: #fff;
 }
+footer {
+	background-color: #0c1a1e;
+	margin: 0px;
+}
+
+.bottom_ul li {
+	display:inline-block;
+	padding:5px;
+}
+
+#rights{
+	padding: 5px;
+}
+.copyright {
+    background-color: #0c2f3a;
+}
 
 button a:hover {
 	text-decoration: none;
 }
-
-#table-vertical{
-	background-color: #fff;
+#table {
+	max-width: 80%;
 }
+
+tbody td {
+	font-family: "Raleway", sans-serif;
+}
+
 #table-vertical td {
-	border: 1px solid #000;
+	border-right: 1px solid #000;
 }
 #admin-page {
 	padding-top: 0px;

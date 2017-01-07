@@ -7,6 +7,7 @@ use App\Vote;
 use App\Server;
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use MinecraftServerStatus\MinecraftServerStatus;
 
 class ServersController extends Controller
@@ -15,16 +16,30 @@ class ServersController extends Controller
     public function index(){
 
     Server::rank_servers();
-    $servers = Server::orderBy('rank', 'ASC')->get();
-    return view('welcome', compact('servers'));
+    $comments = Comment::all();
+    $servers = Server::orderBy('rank', 'ASC')->paginate(10);
+    return view('welcome', compact('servers', 'comments'));
 
     }
     public function vote($id){
-      Vote::create(['server_id'=>$id, 'user_id'=> Auth::id()]);
-      $server = Server::findOrFail($id);
-      $votes = count(Vote::where('server_id', $server->id)->get());
-      $server->update(['votes'=>$votes]);
-      return redirect()->back();
+      $user = Auth::user();
+      if($user->ableToVote()){
+        Vote::create(['server_id'=>$id, 'user_id'=> Auth::id()]);
+        $server = Server::findOrFail($id);
+        $votes = count(Vote::where('server_id', $server->id)->get());
+        $server->update(['votes'=>$votes]);
+
+        Session::flash('message', 'Vote successful');
+        return redirect()->back();
+      } else {
+        Session::flash('message', 'Sorry, you can vote only once a month');
+        return redirect()->back();
+      }
+    }
+
+    public function top(){
+      $servers = Server::orderBy('rank', 'ASC')->get();
+      return view ('top', compact('servers'));
     }
 
     public function view($id) {
